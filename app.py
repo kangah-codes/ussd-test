@@ -8,6 +8,7 @@ def ussd_callback():
 	serviceCode = request.values.get("serviceCode", None)
 	phoneNumber = request.values.get("phoneNumber", None)
 	text = request.values.get("text", None)
+	pin_entered = False
 
 	#serve menus based on text
 	if text == "":
@@ -31,6 +32,11 @@ def ussd_callback():
 
 	elif '@' in text:
 		menu_text = "CON Enter your MoMo pin to authenticate the transaction \n"
+		pin_entered = True
+
+	if pin_entered:
+		menu_text = "END The transaction was successful! Check your email for your eVoucher"
+
 
 
 	resp = make_response(menu_text, 200)
