@@ -11,24 +11,27 @@ def ussd_callback():
 
 	#serve menus based on text
 	if text == "":
-		menu_text = "CON What would you want to check \n"
-		menu_text += "1. My Account \n"
-		menu_text += "2. My phone number \n"
-		menu_text += "3. My branch"
+		menu_text = "CON Welcome to RMU eVoucher \n"
+		menu_text += "1. Ghanaian Student \n"
+		menu_text += "2. International Student \n"
 
 	elif text =="1":
-		menu_text = "CON Choose the account information that you want to view \n"
-		menu_text += "1. My Account balance\n"
-		menu_text += "2. My Account number \n"
+		menu_text = "CON The voucher will cost GHC 100.00 \n"
+		menu_text += "1. My Press 1 to continue\n"
 
 	elif text =="2":
-		menu_text = "END Your phone number is "+phoneNumber
+		menu_text = "CON The voucher will cost GHC 100.00 \n"
+		menu_text += "1. My Press 1 to continue\n"
 
 	elif text =="1*1":
-		menu_text = "END Your account number is ACOO10SWO2101."
+		menu_text = "CON Enter your email to receive your voucher \n"
 
 	elif text =="1*2":
-		menu_text = "END Your BALANCE  is KES 120/-"
+		menu_text = "CON Enter your email to receive your voucher \n"
+
+	elif '@' in text:
+		menu_text = "CON Enter your MoMo pin to authenticate the transaction \n"
+
 
 	resp = make_response(menu_text, 200)
 	resp.headers['Content-Type'] = "text/plain"
